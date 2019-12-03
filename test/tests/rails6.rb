@@ -13,7 +13,7 @@ class Rails6Tests < Minitest::Test
       :controller => 0,
       :model => 0,
       :template => 4,
-      :generic => 21
+      :generic => 22
     }
   end
 
@@ -417,5 +417,18 @@ class Rails6Tests < Minitest::Test
       :relative_path => "app/models/user.rb",
       :code => s(:call, s(:const, :ERB), :new, s(:params)),
       :user_input => s(:params)
+  end
+
+  def test_http_verb_confusion_1
+    assert_warning :type => :warning,
+      :warning_code => 118,
+      :fingerprint => "e364e0c4ed8e75644e4eb434f944b4cfe3e60d55be22333820f34147fb85afbf",
+      :warning_type => "HTTP Verb Confusion",
+      :line => 3,
+      :message => /^Potential\ HTTP\ verb\ confusion\.\ `HEAD`\ is/,
+      :confidence => 2,
+      :relative_path => "app/controllers/accounts_controller.rb",
+      :code => s(:if, s(:call, s(:call, nil, :request), :get?), nil, nil),
+      :user_input => s(:call, s(:call, nil, :request), :get?)
   end
 end
