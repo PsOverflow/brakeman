@@ -112,7 +112,7 @@ If Brakeman is running a bit slow, try
 
     brakeman --faster
 
-This will disable some features, but will probably be much faster (currently it is the same as `--skip-libs --no-branching`). *WARNING*: This may cause Brakeman to miss some vulnerabilities.
+This will disable some features, but will probably be much faster (currently, it is the same as `--skip-libs --no-branching`). *WARNING*: This may cause Brakeman to miss some vulnerabilities.
 
 By default, Brakeman will return a non-zero exit code if any security warnings are found or scanning errors are encountered. To disable this:
 
@@ -126,7 +126,7 @@ To compare results of a scan with a previous scan, use the JSON output option an
 
     brakeman --compare old_report.json
 
-This will output JSON with two lists: one of fixed warnings and one of new warnings.
+This will output JSON with two lists: one of the fixed warnings and one of the new warnings.
 
 Brakeman will ignore warnings if configured to do so. By default, it looks for a configuration file in `config/brakeman.ignore`.
 To create and manage this file, use:
